@@ -34,6 +34,7 @@ config ARCH_MSM7X27
 	select MULTI_IRQ_HANDLER
 	select MSM_PROC_COMM_REGULATOR
 	select CLEANCACHE
+	select QCACHE
 	select MSM_PM2 if PM
 	select MSM_RUN_QUEUE_STATS if MSM_SOC_REV_A
 	select DONT_MAP_HOLE_AFTER_MEMBANK0
@@ -162,6 +163,7 @@ config ARCH_MSM8960
 	select MSM_REMOTE_SPINLOCK_SFPB
 	select ARCH_HAS_HOLES_MEMORYMODEL
 	select CLEANCACHE
+	select QCACHE
 	select MSM_MULTIMEDIA_USE_ION
 	select MULTI_IRQ_HANDLER
 	select MSM_PM8X60 if PM
@@ -236,6 +238,7 @@ config ARCH_APQ8064
 	select CPU_HAS_L2_PMU
 	select HOLES_IN_ZONE if SPARSEMEM
 	select CLEANCACHE
+	select QCACHE
 	select MIGHT_HAVE_PCI
 	select ARCH_SUPPORTS_MSI
 	select ARM_HAS_SG_CHAIN
@@ -1562,6 +1565,11 @@ config HTC_BATT_8960
         depends on HTC_BATT_CORE
         default n
         bool "HTC battery driver for 8960"
+
+config HTC_BATT_SWOLLEN_WA
+        depends on HTC_BATT_8960
+        default n
+        bool "HTC battery swollen workaround"
 
 config DUTY_CYCLE_LIMIT
 	bool "Duty cycle limit charging support"
@@ -3178,6 +3186,18 @@ config PROJECT_NAME
         help
           Support for Project Name
 
+config MACH_B2_WLJ
+        depends on ARCH_MSM8974
+        bool "MSM8974 B2_WLJ"
+        help
+          Support for HTC MSM8974 B2_WLJ
+	  
+config MACH_B2_UL
+        depends on ARCH_MSM8974
+        bool "MSM8974 B2_UL"
+        help
+          Support for HTC MSM8974 B2_UL  
+	  
 config MACH_EYE_UL
         depends on ARCH_MSM8974
         bool "MSM8974 EYE_UL"
